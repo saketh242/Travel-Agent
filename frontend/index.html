@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <p class="eyebrow">AI travel crew</p>
+        <h1>Plan your next trip</h1>
+        <p class="subtitle">
+          Weather, flights, hotels, and sights — one answer from specialist agents.
+        </p>
+      </header>
+
+      <main class="card">
+        <form id="plan-form" class="form">
+          <label for="query">Where and when do you want to go?</label>
+          <textarea
+            id="query"
+            name="query"
+            rows="4"
+            placeholder="e.g. I want to visit Tokyo in July for a week. What should I pack?"
+            required
+          ></textarea>
+
+          <div class="chips" aria-label="Example queries">
+            <button type="button" class="chip" data-example="Plan a trip to Paris in May. Budget and mid-range hotels?">
+              Paris · May
+            </button>
+            <button type="button" class="chip" data-example="Dubai in August — weather, flights, and top places.">
+              Dubai · August
+            </button>
+            <button type="button" class="chip" data-example="New York in December. What clothes should I pack?">
+              New York · December
+            </button>
+          </div>
+
+          <button type="submit" class="submit" id="submit-btn">
+            <span class="btn-label">Generate plan</span>
+            <span class="spinner" hidden aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <p id="error" class="error" role="alert" hidden></p>
+
+        <section id="result" class="result" hidden>
+          <h2>Your plan</h2>
+          <article id="plan-output" class="plan-output"></article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Supported cities: Tokyo, Paris, Dubai, New York, Sydney</span>
+      </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
