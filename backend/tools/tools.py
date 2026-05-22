@@ -14,6 +14,10 @@ def get_weather_data(city_name: str, month: str) -> dict:
     weather_db = {
 
         "Tokyo": {
+            "January": {"temp": 6, "condition": "Cool"},
+            "February": {"temp": 7, "condition": "Cool"},
+            "March": {"temp": 11, "condition": "Mild"},
+            "April": {"temp": 16, "condition": "Spring"},
             "May": {"temp": 22, "condition": "Pleasant"},
             "June": {"temp": 26, "condition": "Humid"},
             "July": {"temp": 31, "condition": "Hot & Humid"},
@@ -25,6 +29,10 @@ def get_weather_data(city_name: str, month: str) -> dict:
         },
 
         "Paris": {
+            "January": {"temp": 5, "condition": "Cold"},
+            "February": {"temp": 6, "condition": "Cool"},
+            "March": {"temp": 9, "condition": "Overcast"},
+            "April": {"temp": 12, "condition": "Breezy"},
             "May": {"temp": 18, "condition": "Pleasant"},
             "June": {"temp": 22, "condition": "Warm"},
             "July": {"temp": 26, "condition": "Sunny"},
@@ -36,6 +44,10 @@ def get_weather_data(city_name: str, month: str) -> dict:
         },
 
         "Dubai": {
+            "January": {"temp": 21, "condition": "Warm"},
+            "February": {"temp": 24, "condition": "Warm"},
+            "March": {"temp": 28, "condition": "Hot"},
+            "April": {"temp": 33, "condition": "Very Hot"},
             "May": {"temp": 38, "condition": "Very Hot"},
             "June": {"temp": 41, "condition": "Extreme Heat"},
             "July": {"temp": 44, "condition": "Scorching"},
@@ -47,6 +59,10 @@ def get_weather_data(city_name: str, month: str) -> dict:
         },
 
         "New York": {
+            "January": {"temp": 1, "condition": "Freezing"},
+            "February": {"temp": 3, "condition": "Cold"},
+            "March": {"temp": 8, "condition": "Windy"},
+            "April": {"temp": 14, "condition": "Showers"},
             "May": {"temp": 20, "condition": "Pleasant"},
             "June": {"temp": 26, "condition": "Warm"},
             "July": {"temp": 31, "condition": "Hot"},
@@ -58,6 +74,10 @@ def get_weather_data(city_name: str, month: str) -> dict:
         },
 
         "Sydney": {
+            "January": {"temp": 29, "condition": "Hot"},
+            "February": {"temp": 28, "condition": "Hot"},
+            "March": {"temp": 26, "condition": "Warm"},
+            "April": {"temp": 23, "condition": "Mild"},
             "May": {"temp": 19, "condition": "Cool"},
             "June": {"temp": 16, "condition": "Chilly"},
             "July": {"temp": 14, "condition": "Cold"},
@@ -90,6 +110,10 @@ def get_flight_prices(city_name: str, month:str) -> dict:
     flight_db = {
 
         "Tokyo": {
+            "January": 920,
+            "February": 890,
+            "March": 850,
+            "April": 800,
             "May": 780,
             "June": 820,
             "July": 950,
@@ -101,6 +125,10 @@ def get_flight_prices(city_name: str, month:str) -> dict:
         },
 
         "Paris": {
+            "January": 700,
+            "February": 680,
+            "March": 650,
+            "April": 630,
             "May": 650,
             "June": 700,
             "July": 850,
@@ -112,6 +140,10 @@ def get_flight_prices(city_name: str, month:str) -> dict:
         },
 
         "Dubai": {
+            "January": 380,
+            "February": 390,
+            "March": 410,
+            "April": 430,
             "May": 400,
             "June": 420,
             "July": 500,
@@ -123,6 +155,10 @@ def get_flight_prices(city_name: str, month:str) -> dict:
         },
 
         "New York": {
+            "January": 980,
+            "February": 940,
+            "March": 900,
+            "April": 860,
             "May": 900,
             "June": 950,
             "July": 1200,
@@ -134,6 +170,10 @@ def get_flight_prices(city_name: str, month:str) -> dict:
         },
 
         "Sydney": {
+            "January": 1450,
+            "February": 1400,
+            "March": 1300,
+            "April": 1200,
             "May": 1000,
             "June": 1100,
             "July": 1250,
@@ -231,38 +271,78 @@ def get_hotel_prices(city_name: str, month: str) -> dict:
     hotel_db = {
 
         "Tokyo": {
+            "January": {"budget": 60, "mid_range": 140, "luxury": 380},
+            "February": {"budget": 62, "mid_range": 145, "luxury": 390},
+            "March": {"budget": 65, "mid_range": 150, "luxury": 400},
+            "April": {"budget": 68, "mid_range": 155, "luxury": 410},
             "May": {"budget": 70, "mid_range": 160, "luxury": 420},
             "June": {"budget": 75, "mid_range": 170, "luxury": 450},
             "July": {"budget": 90, "mid_range": 210, "luxury": 520},
             "August": {"budget": 100, "mid_range": 230, "luxury": 580},
+            "September": {"budget": 95, "mid_range": 220, "luxury": 540},
+            "October": {"budget": 85, "mid_range": 190, "luxury": 470},
+            "November": {"budget": 78, "mid_range": 170, "luxury": 430},
+            "December": {"budget": 74, "mid_range": 165, "luxury": 410},
         },
 
         "Paris": {
+            "January": {"budget": 85, "mid_range": 190, "luxury": 520},
+            "February": {"budget": 83, "mid_range": 185, "luxury": 510},
+            "March": {"budget": 82, "mid_range": 182, "luxury": 505},
+            "April": {"budget": 84, "mid_range": 188, "luxury": 515},
             "May": {"budget": 80, "mid_range": 180, "luxury": 500},
             "June": {"budget": 85, "mid_range": 200, "luxury": 550},
             "July": {"budget": 95, "mid_range": 240, "luxury": 620},
             "August": {"budget": 100, "mid_range": 250, "luxury": 650},
+            "September": {"budget": 92, "mid_range": 230, "luxury": 600},
+            "October": {"budget": 88, "mid_range": 210, "luxury": 560},
+            "November": {"budget": 82, "mid_range": 195, "luxury": 530},
+            "December": {"budget": 90, "mid_range": 210, "luxury": 580},
         },
 
         "Dubai": {
+            "January": {"budget": 55, "mid_range": 120, "luxury": 330},
+            "February": {"budget": 58, "mid_range": 125, "luxury": 340},
+            "March": {"budget": 60, "mid_range": 130, "luxury": 350},
+            "April": {"budget": 58, "mid_range": 128, "luxury": 345},
             "May": {"budget": 60, "mid_range": 140, "luxury": 380},
             "June": {"budget": 55, "mid_range": 130, "luxury": 350},
             "July": {"budget": 50, "mid_range": 120, "luxury": 320},
             "August": {"budget": 50, "mid_range": 120, "luxury": 310},
+            "September": {"budget": 52, "mid_range": 125, "luxury": 330},
+            "October": {"budget": 56, "mid_range": 130, "luxury": 340},
+            "November": {"budget": 58, "mid_range": 135, "luxury": 360},
+            "December": {"budget": 62, "mid_range": 140, "luxury": 370},
         },
 
         "New York": {
+            "January": {"budget": 100, "mid_range": 240, "luxury": 650},
+            "February": {"budget": 105, "mid_range": 250, "luxury": 680},
+            "March": {"budget": 108, "mid_range": 255, "luxury": 690},
+            "April": {"budget": 110, "mid_range": 260, "luxury": 700},
             "May": {"budget": 110, "mid_range": 260, "luxury": 700},
             "June": {"budget": 120, "mid_range": 280, "luxury": 760},
             "July": {"budget": 140, "mid_range": 320, "luxury": 850},
             "August": {"budget": 145, "mid_range": 330, "luxury": 900},
+            "September": {"budget": 135, "mid_range": 310, "luxury": 820},
+            "October": {"budget": 125, "mid_range": 290, "luxury": 780},
+            "November": {"budget": 115, "mid_range": 270, "luxury": 720},
+            "December": {"budget": 130, "mid_range": 310, "luxury": 860},
         },
 
         "Sydney": {
+            "January": {"budget": 90, "mid_range": 210, "luxury": 520},
+            "February": {"budget": 88, "mid_range": 205, "luxury": 510},
+            "March": {"budget": 85, "mid_range": 200, "luxury": 500},
+            "April": {"budget": 80, "mid_range": 185, "luxury": 460},
             "May": {"budget": 75, "mid_range": 170, "luxury": 430},
             "June": {"budget": 70, "mid_range": 160, "luxury": 400},
             "July": {"budget": 68, "mid_range": 150, "luxury": 390},
             "August": {"budget": 72, "mid_range": 155, "luxury": 410},
+            "September": {"budget": 76, "mid_range": 165, "luxury": 430},
+            "October": {"budget": 80, "mid_range": 175, "luxury": 450},
+            "November": {"budget": 83, "mid_range": 180, "luxury": 470},
+            "December": {"budget": 88, "mid_range": 200, "luxury": 500},
         }
     }
 

@@ -4,7 +4,7 @@ An AI-powered travel planning app that uses a **CrewAI** multi-agent crew to ans
 
 ### Frontend
 
-The UI in `frontend/` is **vibecoded with [Cursor](https://cursor.com)** — built iteratively in the editor with AI assistance rather than hand-scaffolded from a template. It is intentionally minimal: vanilla HTML, CSS, and JavaScript (no React/Vue build step), served by FastAPI as static files. The backend and CrewAI logic were written separately; the frontend only talks to `POST /api/plan`.
+The UI in `frontend/` is **vibecoded with [Cursor](https://cursor.com)** — built iteratively in the editor with AI assistance rather than hand-scaffolded from a template. It is intentionally minimal: vanilla HTML, CSS, and JavaScript (no React/Vue build step), served by FastAPI as static files. No separate frontend server is required. The backend and CrewAI logic were written separately; the frontend only talks to `POST /api/plan`.
 
 ## Architecture
 
@@ -118,12 +118,12 @@ cp .env.example .env
 
 Edit `.env`:
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `OPENAI_API_KEY` | Yes | OpenAI API key for the LLM |
-| `LANGFUSE_SECRET_KEY` | No | Langfuse secret key |
-| `LANGFUSE_PUBLIC_KEY` | No | Langfuse public key |
-| `LANGFUSE_BASE_URL` | No | Defaults to `https://cloud.langfuse.com` |
+| Variable              | Required | Description                              |
+| --------------------- | -------- | ---------------------------------------- |
+| `OPENAI_API_KEY`      | Yes      | OpenAI API key for the LLM               |
+| `LANGFUSE_SECRET_KEY` | No       | Langfuse secret key                      |
+| `LANGFUSE_PUBLIC_KEY` | No       | Langfuse public key                      |
+| `LANGFUSE_BASE_URL`   | No       | Defaults to `https://cloud.langfuse.com` |
 
 Langfuse tracing is enabled only when **both** `LANGFUSE_SECRET_KEY` and `LANGFUSE_PUBLIC_KEY` are set.
 
@@ -139,6 +139,8 @@ PYTHONPATH=. uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
 Open in your browser:
 
 **http://127.0.0.1:8000**
+
+> Note: Do not run a separate frontend dev server for this project. The backend serves the UI directly.
 
 ### Health check
 
@@ -165,24 +167,24 @@ Response:
 
 ## API endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/` | Serves the web UI |
-| `GET` | `/health` | Server health check |
+| Method | Path        | Description                                   |
+| ------ | ----------- | --------------------------------------------- |
+| `GET`  | `/`         | Serves the web UI                             |
+| `GET`  | `/health`   | Server health check                           |
 | `POST` | `/api/plan` | Generate a travel plan (`{ "query": "..." }`) |
-| `GET` | `/static/*` | CSS and JavaScript assets |
+| `GET`  | `/static/*` | CSS and JavaScript assets                     |
 
 ## Supported mock data
 
 Tools use **hardcoded** data (no real booking or weather APIs). Use these **exact city names** for best results:
 
-| City | Months with weather / flights / hotels |
-|------|----------------------------------------|
-| Tokyo | May–December (varies by tool) |
-| Paris | May–December |
-| Dubai | May–December |
-| New York | May–December |
-| Sydney | May–December |
+| City     | Months with weather / flights / hotels |
+| -------- | -------------------------------------- |
+| Tokyo    | January–December                       |
+| Paris    | January–December                       |
+| Dubai    | January–December                       |
+| New York | January–December                       |
+| Sydney   | January–December                       |
 
 **Example queries:**
 
@@ -190,17 +192,17 @@ Tools use **hardcoded** data (no real booking or weather APIs). Use these **exac
 - `Dubai in August — weather, flights, and top places.`
 - `New York in December. What clothes should I pack?`
 
-Hotel data in the mock DB covers fewer months than weather/flights for some cities; agents are instructed not to invent numbers when tools return errors.
+All mock tools now cover the full year for the listed cities.
 
 ## Agents
 
-| Agent | Tool | Role |
-|-------|------|------|
-| Weather Analyst | `get_weather_data` | Temperature and conditions by city + month |
-| Travel Advisor | `get_flight_prices` | Round-trip USD estimates |
-| Hotel Advisor | `get_hotel_prices` | Budget / mid-range / luxury nightly rates |
-| Tour Guide | `get_tourist_places` | Top sights in the city |
-| Final Tour Planner | — | Combines prior outputs; packing tips, direct answer |
+| Agent              | Tool                 | Role                                                |
+| ------------------ | -------------------- | --------------------------------------------------- |
+| Weather Analyst    | `get_weather_data`   | Temperature and conditions by city + month          |
+| Travel Advisor     | `get_flight_prices`  | Round-trip USD estimates                            |
+| Hotel Advisor      | `get_hotel_prices`   | Budget / mid-range / luxury nightly rates           |
+| Tour Guide         | `get_tourist_places` | Top sights in the city                              |
+| Final Tour Planner | —                    | Combines prior outputs; packing tips, direct answer |
 
 Tasks run with `Process.sequential` so each specialist completes before the final planner runs.
 
@@ -212,13 +214,13 @@ Tasks run with `Process.sequential` so each specialist completes before the fina
 
 ## Troubleshooting
 
-| Issue | Fix |
-|-------|-----|
-| `Missing required environment variable: OPENAI_API_KEY` | Create `.env` from `.env.example` and set the key |
-| `ModuleNotFoundError: backend` | Run from project root with `PYTHONPATH=.` |
-| `ModuleNotFoundError: fastapi` | `pip install -r requirements.txt` inside `venv` |
-| Empty or generic plan | Use a supported city name and month (e.g. `Paris`, `May`) |
-| Slow responses | Normal for multi-agent runs; check OpenAI quota and network |
+| Issue                                                   | Fix                                                         |
+| ------------------------------------------------------- | ----------------------------------------------------------- |
+| `Missing required environment variable: OPENAI_API_KEY` | Create `.env` from `.env.example` and set the key           |
+| `ModuleNotFoundError: backend`                          | Run from project root with `PYTHONPATH=.`                   |
+| `ModuleNotFoundError: fastapi`                          | `pip install -r requirements.txt` inside `venv`             |
+| Empty or generic plan                                   | Use a supported city name and month (e.g. `Paris`, `May`)   |
+| Slow responses                                          | Normal for multi-agent runs; check OpenAI quota and network |
 
 ## License
 

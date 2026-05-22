@@ -38,9 +38,10 @@ body {
 }
 
 .page {
-  max-width: 720px;
+  max-width: 1120px;
+  width: min(100%, 1120px);
   margin: 0 auto;
-  padding: 3rem 1.25rem 2rem;
+  padding: 3rem 1.5rem 2rem;
 }
 
 .header {
@@ -99,12 +100,50 @@ h1 {
 }
 
 .card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--shadow);
   backdrop-filter: blur(6px);
+}
+
+.card.has-result {
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.card.has-result .form {
+  flex: 1 1 42%;
+  min-width: 320px;
+}
+
+.card.has-result .result {
+  flex: 1 1 56%;
+  min-width: 360px;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+}
+
+@media (max-width: 920px) {
+  .card.has-result {
+    flex-direction: column;
+  }
+  .card.has-result .result {
+    border-left: none;
+    padding-left: 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+  }
 }
 
 .form label {

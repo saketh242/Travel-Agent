@@ -6,6 +6,13 @@ const spinner = submitBtn.querySelector(".spinner");
 const errorEl = document.getElementById("error");
 const resultSection = document.getElementById("result");
 const planOutput = document.getElementById("plan-output");
+const card = document.querySelector(".card");
+
+const apiBase =
+  window.location.host.endsWith(":5173") || window.location.protocol === "file:"
+    ? "http://127.0.0.1:8000"
+    : window.location.origin;
+const apiUrl = `${apiBase}/api/plan`;
 
 document.querySelectorAll(".chip").forEach((chip) => {
   chip.addEventListener("click", () => {
@@ -39,7 +46,7 @@ form.addEventListener("submit", async (event) => {
   setLoading(true);
 
   try {
-    const response = await fetch("/api/plan", {
+    const response = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query }),
@@ -57,10 +64,14 @@ form.addEventListener("submit", async (event) => {
 
     planOutput.textContent = data.plan || "";
     resultSection.hidden = false;
+    card.classList.add("has-result");
     resultSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
   } catch (err) {
     showError(err.message || "Failed to reach the server.");
   } finally {
+    if (resultSection.hidden) {
+      card.classList.remove("has-result");
+    }
     setLoading(false);
   }
 });
