@@ -70,9 +70,11 @@ def travel_planner(query: str) -> str:
 
     tour_planner = Agent(
         role="Final Tour Planner",
-        goal=(
-            "Provide a final tour plan based on the user query. "
-            "Answer directly and suggest what clothes to pack."
+        goal=(f"""
+            Provide a final tour plan based on the user query. 
+            Answer directly and suggest what clothes to pack.
+            If youd did not find any information from previous agents just say you dont have information
+            """
         ),
         backstory="You synthesize specialist reports into one helpful trip plan.",
         llm=llm,

@@ -6,6 +6,26 @@ An AI-powered travel planning app that uses a **CrewAI** multi-agent crew to ans
 
 The UI in `frontend/` is **vibecoded with [Cursor](https://cursor.com)** — built iteratively in the editor with AI assistance rather than hand-scaffolded from a template. It is intentionally minimal: vanilla HTML, CSS, and JavaScript (no React/Vue build step), served by FastAPI as static files. No separate frontend server is required. The backend and CrewAI logic were written separately; the frontend only talks to `POST /api/plan`.
 
+## Demo
+
+### Travel Planner UI
+
+<p align="center">
+  <img src="images/crew1.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="images/crew2.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="images/crew3.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="images/crew4.png" width="800"/>
+</p>
+
 ## Architecture
 
 ```mermaid
